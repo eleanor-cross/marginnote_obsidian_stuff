@@ -1,0 +1,11 @@
+{
+  "id": "marginnote-obsidian",
+  "name": "MarginNote Obsidian Import",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Import MarginNote4 .marginpkg files into Obsidian. Creates one note per extract combining highlights, review cards, and mindmap nodes.",
+  "author": "MarginNote4-Obsidian Integration Project",
+  "authorUrl": "",
+  "fundingUrl": "",
+  "isDesktopOnly": false
+}

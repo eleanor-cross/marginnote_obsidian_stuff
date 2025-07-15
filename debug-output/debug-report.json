@@ -1,0 +1,118 @@
+{
+  "timestamp": "2025-06-26T19:20:53.315Z",
+  "steps": {
+    "File Existence": {
+      "status": "PASS",
+      "details": "Found file: 401232 bytes",
+      "timestamp": "2025-06-26T19:20:53.335Z"
+    },
+    "File Size": {
+      "status": "PASS",
+      "details": "0.38 MB",
+      "timestamp": "2025-06-26T19:20:53.335Z"
+    },
+    "File Permissions": {
+      "status": "PASS",
+      "details": "File is readable",
+      "timestamp": "2025-06-26T19:20:53.344Z"
+    },
+    "main.js Build": {
+      "status": "PASS",
+      "details": "102218 bytes",
+      "timestamp": "2025-06-26T19:20:53.355Z"
+    },
+    "manifest.json": {
+      "status": "PASS",
+      "details": "Version 1.0.0",
+      "timestamp": "2025-06-26T19:20:53.384Z"
+    },
+    "ZIP Signature": {
+      "status": "PASS",
+      "details": "0x04034b50 (valid ZIP)",
+      "timestamp": "2025-06-26T19:20:53.445Z"
+    },
+    "Central Directory": {
+      "status": "PASS",
+      "details": "Found at offset 400839",
+      "timestamp": "2025-06-26T19:20:53.445Z"
+    },
+    "ZIP Entries": {
+      "status": "PASS",
+      "details": "Found 5 files",
+      "timestamp": "2025-06-26T19:20:53.446Z"
+    },
+    "Database File": {
+      "status": "PASS",
+      "details": "Testing3(2025-06-26-00-19-38).marginnotes (884736 bytes)",
+      "timestamp": "2025-06-26T19:20:53.458Z"
+    },
+    "Database Extraction": {
+      "status": "PASS",
+      "details": "Decompressed 884736 bytes",
+      "timestamp": "2025-06-26T19:20:53.463Z"
+    },
+    "SQLite Verification": {
+      "status": "PASS",
+      "details": "Valid SQLite database",
+      "timestamp": "2025-06-26T19:20:53.506Z"
+    },
+    "Database Content": {
+      "status": "PASS",
+      "details": "884736 characters to analyze",
+      "timestamp": "2025-06-26T19:20:53.576Z"
+    },
+    "Pattern: SQLite Tables": {
+      "status": "PASS",
+      "details": "15 matches found",
+      "timestamp": "2025-06-26T19:20:53.577Z"
+    },
+    "Pattern: Highlight Text": {
+      "status": "PASS",
+      "details": "2 matches found",
+      "timestamp": "2025-06-26T19:20:53.577Z"
+    },
+    "Pattern: Notes Text": {
+      "status": "PASS",
+      "details": "1 matches found",
+      "timestamp": "2025-06-26T19:20:53.578Z"
+    },
+    "Pattern: Topics": {
+      "status": "PASS",
+      "details": "20 matches found",
+      "timestamp": "2025-06-26T19:20:53.578Z"
+    },
+    "Pattern: Hashtags": {
+      "status": "PASS",
+      "details": "299 matches found",
+      "timestamp": "2025-06-26T19:20:53.578Z"
+    },
+    "Pattern: Document References": {
+      "status": "PASS",
+      "details": "8 matches found",
+      "timestamp": "2025-06-26T19:20:53.579Z"
+    },
+    "Pattern: UUIDs": {
+      "status": "PASS",
+      "details": "737 matches found",
+      "timestamp": "2025-06-26T19:20:53.584Z"
+    },
+    "User Content Extraction": {
+      "status": "PASS",
+      "details": "50 potential notes found",
+      "timestamp": "2025-06-26T19:20:53.610Z"
+    },
+    "Module Import": {
+      "status": "PASS",
+      "details": "main.js exists (manual testing required)",
+      "timestamp": "2025-06-26T19:20:53.634Z"
+    }
+  },
+  "errors": [],
+  "summary": {
+    "totalSteps": 21,
+    "passed": 21,
+    "failed": 0,
+    "warnings": 0,
+    "overallStatus": "HEALTHY"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "output_directory": "./obsidian_import",
+  "create_subdirectories": true,
+  "preserve_structure": true,
+  "strict_decoding": false,
+  "include_metadata": true,
+  "include_media": true,
+  "include_coordinates": true,
+  "skip_empty_notes": true,
+  "log_level": "INFO",
+  "report_file": "import_report.json",
+  
+  "obsidian_config": {
+    "note_template": "# {title}\n\n{content}\n\n{metadata}",
+    "include_coordinates": true,
+    "include_media_references": true,
+    "preserve_hierarchy": true,
+    "link_format": "[[{note_id}]]",
+    "hashtag_format": "#{tag}",
+    "media_format": "![{alt_text}]({media_ref})",
+    "date_format": "%Y-%m-%d %H:%M:%S",
+    "metadata_section": true,
+    
+    "content_sections": {
+      "highlights": true,
+      "notes": true,
+      "tags": true,
+      "links": true,
+      "media": true,
+      "coordinates": true
+    }
+  }
+}

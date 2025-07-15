@@ -1,0 +1,65 @@
+{
+  "SQLite Tables": {
+    "count": 15,
+    "matches": [
+      "CREATE TABLE Z_MODELCACHE",
+      "CREATE TABLE Z_METADATA",
+      "CREATE TABLE Z_PRIMARYKEY",
+      "CREATE TABLE ZMEDIA",
+      "CREATE TABLE ZEPUBRANGE"
+    ]
+  },
+  "Highlight Text": {
+    "count": 2,
+    "matches": [
+      "ZHIGHLIGHT_TEXT",
+      "ZHIGHLIGHT_TEXT"
+    ]
+  },
+  "Notes Text": {
+    "count": 1,
+    "matches": [
+      "ZNOTES_TEXT"
+    ]
+  },
+  "Topics": {
+    "count": 20,
+    "matches": [
+      "ZTOPIC",
+      "ZTOPIC",
+      "ZTOPIC",
+      "ZTOPIC",
+      "ZTOPIC"
+    ]
+  },
+  "Hashtags": {
+    "count": 299,
+    "matches": [
+      "#Examplea474fc055562b0d594a7702c779a8ba4a474fc055562b0d594a7702c779a8ba4Doc2",
+      "#1057613E7",
+      "#12F034B80",
+      "#OnlyDue",
+      "#Exampled2f93fb7034ed9d8881e60bba7c823c7d2f93fb7034ed9d8881e60bba7c823c7RC1C63E28EF"
+    ]
+  },
+  "Document References": {
+    "count": 8,
+    "matches": [
+      "Doc3",
+      "Doc4",
+      "Doc2",
+      "Doc1",
+      "Doc2"
+    ]
+  },
+  "UUIDs": {
+    "count": 737,
+    "matches": [
+      "057613E7-CEA4-4952-BB23-34B9214CA64A",
+      "2F034B80-144A-4A40-A76F-0E879FA1922B",
+      "C63E28EF-E8F4-4774-99FD-C6E5D3DDA79D",
+      "923C1091-6B0D-4E7F-86F7-FBBE18A10922",
+      "9391C59E-3365-4DF1-9CF7-70C5D01E7E44"
+    ]
+  }
+}

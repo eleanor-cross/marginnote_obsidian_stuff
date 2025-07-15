@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-06-26T19:22:26.707Z",
+  "status": "EXTRACTION_WORKING_CONVERSION_BROKEN",
+  "workingComponents": [
+    "ZIP parsing and decompression",
+    "SQLite database extraction",
+    "Content pattern detection",
+    "Folder creation in Obsidian"
+  ],
+  "brokenComponents": [
+    "Note content conversion to markdown",
+    "File writing with actual content",
+    "Pattern validation for user content"
+  ],
+  "extractedData": {
+    "hashtags": [
+      "#Example",
+      "#OnlyDue"
+    ],
+    "documents": [
+      "Doc1",
+      "Doc2",
+      "Doc3",
+      "Doc4"
+    ],
+    "totalHashtags": 299,
+    "totalUserContent": 50,
+    "sqliteTables": 15
+  },
+  "recommendedFixes": [
+    "Update extractNotesFromText() patterns to match working extraction",
+    "Modify isValidNoteContent() to accept found hashtag patterns",
+    "Add fallback content creation in writeNotesToVault()",
+    "Test with simplified content first"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "defaultOutputFolder": "MarginNote Import",
+  "createSubdirectories": true,
+  "includeMetadata": true,
+  "includeCoordinates": true,
+  "skipEmptyNotes": false,
+  "strictDecoding": false
+}

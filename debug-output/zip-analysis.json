@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Testing3(2025-06-26-00-19-38).marginnotes",
+    "method": 8,
+    "compressedSize": 371529,
+    "uncompressedSize": 884736,
+    "localHeaderOffset": 0
+  },
+  {
+    "name": "From iCloud/Doc1.pdf",
+    "method": 8,
+    "compressedSize": 8441,
+    "uncompressedSize": 10663,
+    "localHeaderOffset": 371628
+  },
+  {
+    "name": "From iCloud/Doc2.pdf",
+    "method": 8,
+    "compressedSize": 7469,
+    "uncompressedSize": 9226,
+    "localHeaderOffset": 380147
+  },
+  {
+    "name": "From iCloud/Doc3.pdf",
+    "method": 8,
+    "compressedSize": 6569,
+    "uncompressedSize": 8193,
+    "localHeaderOffset": 387694
+  },
+  {
+    "name": "From iCloud/Doc4.pdf",
+    "method": 8,
+    "compressedSize": 6420,
+    "uncompressedSize": 8029,
+    "localHeaderOffset": 394341
+  }
+]
