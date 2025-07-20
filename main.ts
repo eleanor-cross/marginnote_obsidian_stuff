@@ -105,8 +105,9 @@ export default class MarginNotePlugin extends Plugin {
 			const result = await converter.convertFromData(databaseData);
 			
 			if (result.success) {
-				new Notice(`Import completed! Created ${result.notesCreated} notes in ${this.settings.defaultOutputFolder}.`);
-				console.log(`Import completed: ${result.notesCreated} notes created in vault folder: ${this.settings.defaultOutputFolder}`);
+				const folderName = result.outputFolder || this.settings.defaultOutputFolder;
+				new Notice(`Import completed! Created ${result.notesCreated} notes in ${folderName}.`);
+				console.log(`Import completed: ${result.notesCreated} notes created in vault folder: ${folderName}`);
 			} else {
 				new Notice(`Import failed: ${result.errors.join(', ')}`);
 				console.error('Import errors:', result.errors);

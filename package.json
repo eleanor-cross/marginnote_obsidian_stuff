@@ -28,6 +28,8 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
+    "@esbuild/win32-x64": "^0.25.8",
+    "bplist-parser": "^0.3.2",
     "fflate": "^0.8.2",
     "sql.js": "^1.13.0"
   }

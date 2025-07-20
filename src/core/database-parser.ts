@@ -9,7 +9,9 @@
 
 import { DatabaseData } from './margin-note-importer';
 import { unzip, Unzipped } from 'fflate';
-import initSqlJs from 'sql.js';
+// Use the asm.js version which doesn't require WASM
+import initSqlJs from 'sql.js/dist/sql-asm.js';
+import { NSKeyedArchiverDecoder } from './nskeyedarchiver-decoder';
 
 export interface MarginPkgFile {
     name: string;
@@ -391,11 +393,9 @@ export class MarginNoteDatabaseParser {
         try {
             console.log('Initializing sql.js...');
             
-            // Initialize sql.js
-            const SQL = await initSqlJs({
-                // sql.js requires the wasm file to be loaded
-                locateFile: (file: string) => `https://sql.js.org/dist/${file}`
-            });
+            // Initialize sql.js without external WASM loading
+            // This will use the bundled sql.js with asm.js fallback
+            const SQL = await initSqlJs();
             
             console.log('sql.js initialized, opening database...');
             
@@ -423,6 +423,10 @@ export class MarginNoteDatabaseParser {
             zbooknoteStmt.free();
             
             console.log(`Found ${zbooknoteRows.length} rows in ZBOOKNOTE`);
+            
+            // Decode binary columns in ZBOOKNOTE
+            console.log('Decoding NSKeyedArchiver data...');
+            this.decodeBinaryColumns(zbooknoteRows);
             
             // Query ZTOPIC table if it exists
             let ztopicRows: DatabaseRow[] = [];
@@ -542,6 +546,75 @@ export class MarginNoteDatabaseParser {
         }
         
         return text.substring(0, 47).trim() + '...';
+    }
+
+    /**
+     * Decode binary columns (ZNOTES, ZHIGHLIGHTS) in ZBOOKNOTE rows
+     */
+    private decodeBinaryColumns(zbooknoteRows: DatabaseRow[]): void {
+        const decoder = new NSKeyedArchiverDecoder({ strictMode: this.strictDecoding });
+        
+        for (let i = 0; i < zbooknoteRows.length; i++) {
+            const row = zbooknoteRows[i];
+            
+            try {
+                // Decode ZNOTES column
+                if (row.ZNOTES) {
+                    const decodedNotes = decoder.decodeZNotes(row.ZNOTES);
+                    row.ZNOTES_DECODE = JSON.stringify(decodedNotes);
+                    
+                    // Extract useful content for easier access
+                    if (decodedNotes.highlightText) {
+                        row.ZNOTES_HIGHLIGHT_TEXT = decodedNotes.highlightText;
+                    }
+                    if (decodedNotes.hashtags && decodedNotes.hashtags.length > 0) {
+                        row.ZNOTES_HASHTAGS = decodedNotes.hashtags.join(', ');
+                    }
+                    if (decodedNotes.links && decodedNotes.links.length > 0) {
+                        row.ZNOTES_LINKS = decodedNotes.links.join(', ');
+                    }
+                    if (decodedNotes.formattedText && decodedNotes.formattedText.length > 0) {
+                        row.ZNOTES_FORMATTED_TEXT = decodedNotes.formattedText.join('\n');
+                    }
+                }
+                
+                // Decode ZHIGHLIGHTS column
+                if (row.ZHIGHLIGHTS) {
+                    const decodedHighlights = decoder.decodeZHighlights(row.ZHIGHLIGHTS);
+                    row.ZHIGHLIGHTS_DECODE = JSON.stringify(decodedHighlights);
+                    
+                    // Extract coordinate information
+                    if (decodedHighlights.length > 0) {
+                        const firstHighlight = decodedHighlights[0];
+                        if (firstHighlight.rect) {
+                            row.ZHIGHLIGHTS_RECT = `${firstHighlight.rect.x},${firstHighlight.rect.y},${firstHighlight.rect.width},${firstHighlight.rect.height}`;
+                        }
+                        if (firstHighlight.pageNo) {
+                            row.ZHIGHLIGHTS_PAGE = firstHighlight.pageNo;
+                        }
+                    }
+                }
+                
+                // Log progress for first few rows and specific problem note
+                if (i < 3 || row.ZNOTEID === '4BA5CED0-0B42-4204-B803-CEEFFB4BC890') {
+                    console.log(`Row ${i + 1} (${row.ZNOTEID}) decoded:`, {
+                        noteId: row.ZNOTEID,
+                        hasNotes: !!row.ZNOTES_DECODE,
+                        hasHighlights: !!row.ZHIGHLIGHTS_DECODE,
+                        extractedHashtags: row.ZNOTES_HASHTAGS,
+                        extractedLinks: row.ZNOTES_LINKS,
+                        zhighlightsRaw: row.ZHIGHLIGHTS ? String(row.ZHIGHLIGHTS).substring(0, 100) + '...' : 'null',
+                        zhighlightsDecode: row.ZHIGHLIGHTS_DECODE ? String(row.ZHIGHLIGHTS_DECODE).substring(0, 200) + '...' : 'null'
+                    });
+                }
+                
+            } catch (error) {
+                console.warn(`Failed to decode binary data for row ${i}:`, error);
+                // Continue processing other rows even if one fails
+            }
+        }
+        
+        console.log(`Binary decoding completed for ${zbooknoteRows.length} rows`);
     }
 
     /**
